@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Ammonia Safety Guard",
+    "slug": "ammonia-safety-guard",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#1a1f2e"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.ammoniaapp.safeguard"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a1f2e"
+      },
+      "package": "com.ammoniaapp.safeguard"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "923e64e3-63bf-4163-8884-37f1df73f285"
+      }
+    }
+  }
+}
