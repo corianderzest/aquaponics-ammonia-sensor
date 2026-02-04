@@ -6,7 +6,9 @@
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "splash": {
-      "backgroundColor": "#1a1f2e"
+      "image": "assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": false,
@@ -14,13 +16,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#1a1f2e"
+        "foregroundImage": "assets/images/android-icon-foreground.png",
+        "backgroundImage": "assets/images/android-icon-background.png",
+        "backgroundColor": "#E6F4FE"
       },
       "package": "com.ammoniaapp.safeguard"
-    },
+    },      
     "extra": {
-      "eas": {
+      "eas": { 
         "projectId": "923e64e3-63bf-4163-8884-37f1df73f285"
       }
     }
