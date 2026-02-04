@@ -168,7 +168,7 @@ export function predictAmmoniaRisk(temp_c, pH, ec) {
   const pred_log = forestPredict(scaled);
 
   // 4. Inverse transform: expm1
-  const pred_TAN = Math.expm1(pred_log);
+  let pred_TAN = Math.expm1(pred_log);
   pred_TAN = pred_TAN / 17.03;
 
   // 5. Emerson physics: TAN → toxic NH3
