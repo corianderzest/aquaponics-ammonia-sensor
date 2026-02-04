@@ -30,14 +30,21 @@ def rnVersion = getRNVersion()
  * By default you don't need to apply any configuration, just uncomment the lines you need.
  */
 react {
-    entryFile = file(["node", "-e", "require('expo/scripts/resolveAppEntry')", projectRoot, "android", "absolute"].execute(null, rootDir).text.trim())
-    reactNativeDir = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
-    hermesCommand = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/sdks/hermesc/%OS-BIN%/hermesc"
-    codegenDir = new File(["node", "--print", "require.resolve('@react-native/codegen/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
+    // 1. Entry File (Standard Expo path)
+    entryFile = file("../../node_modules/expo/AppEntry.js")
 
-    // Use Expo CLI to bundle the app, this ensures the Metro config
-    // works correctly with Expo projects.
-    cliFile = new File(["node", "--print", "require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })"].execute(null, rootDir).text.trim())
+    // 2. React Native Path
+    reactNativeDir = file("../../node_modules/react-native")
+
+    // 3. Hermes Compiler (Points to the Linux binary for EAS Build)
+    hermesCommand = file("../../node_modules/react-native/sdks/hermesc/linux64-bin/hermesc")
+
+    // 4. Codegen Path
+    codegenDir = file("../../node_modules/@react-native/codegen")
+
+    // 5. Expo CLI Path (This is where your error was!)
+    cliFile = file("../../node_modules/@expo/cli/build/bin/cli")
+
     bundleCommand = "export:embed"
 
     /* Folders */
@@ -80,8 +87,8 @@ react {
     // hermesFlags = ["-O", "-output-source-map"]
 
     if (rnVersion >= versionToNumber(0, 75, 0)) {
-        /* Autolinking */
-        autolinkLibrariesWithApp()
+        apply from: "../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"
+        applyNativeModulesAppBuildGradle(project)
     }
 }
 
