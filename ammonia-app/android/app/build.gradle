@@ -37,7 +37,7 @@ react {
     reactNativeDir = file("../../node_modules/react-native")
 
     // 3. Hermes Compiler (Points to the Linux binary for EAS Build)
-    hermesCommand = file("../../node_modules/react-native/sdks/hermesc/linux64-bin/hermesc")
+    hermesCommand = file("../../node_modules/react-native/sdks/hermesc/linux64-bin/hermesc/linux64-bin/hermesc").getAbsolutePath()
 
     // 4. Codegen Path
     codegenDir = file("../../node_modules/@react-native/codegen")
